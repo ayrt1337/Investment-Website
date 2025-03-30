@@ -102,7 +102,7 @@ const PBtn = styled.p`
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: ease-in-out 0.2s;
+    transition: ease-in-out 0.1s;
 
     &:hover{
         box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 1);
@@ -121,7 +121,7 @@ const PNumber = styled.p`
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: ease-in-out 0.2s;
+    transition: ease-in-out 0.1s;
 
     &:hover{
         box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 1);

@@ -1,8 +1,9 @@
 import { React, useEffect, useState }  from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useMediaQuery } from "react-responsive"
+import Spinner from 'react-bootstrap/Spinner'
 
 const ActionDetails = () => {
     const for1475Width = useMediaQuery({query: '(max-width: 1475px)'})
@@ -11,11 +12,18 @@ const ActionDetails = () => {
     const for640Width = useMediaQuery({query: '(max-width: 640px)'})
     const for465Width = useMediaQuery({query: '(max-width: 465px)'})
 
-    const { pathname } = useLocation()
-
+    const [flag, setFlag] = useState(true)
+    
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [pathname])
+        document.getElementById('root').style.height = '100vh'
+        document.getElementById('root').style.overflow = 'hidden'
+    }, [])
+    
+    setTimeout(() => {
+        setFlag(false)
+        document.getElementById('root').style.minHeight = '100%'
+        document.getElementById('root').style.overflow = 'visible'
+    }, 2500)
 
     const [showData, setData] = useState([])
     const [showImg, setImg] = useState(null)
@@ -61,6 +69,16 @@ const ActionDetails = () => {
     
     return(
         <>
+            {flag &&
+                <Overlay>
+                    <div>
+                        <h1 style={{color: 'white', marginRight: '20px'}}>Carregando</h1>
+                    </div>
+                            
+                    <Spinner animation='border' variant='light' />
+                </Overlay>
+            }
+
             {!for1475Width &&
                 <>
                     <SubHeader>
@@ -742,6 +760,16 @@ const ActionDetails = () => {
         </>
     )
 }
+
+const Overlay = styled.div`
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color:rgba(16, 19, 24, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
 const SubHeader = styled.div`
     background-color: #173e5b;

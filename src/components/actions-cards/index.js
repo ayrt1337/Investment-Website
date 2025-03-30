@@ -78,10 +78,10 @@ const DivCard = styled.div`
   width: 250px;
   height: 330px;
   cursor: pointer;
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.1s;
 
   &:hover{
-    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 1);
   }
 `
 

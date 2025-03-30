@@ -111,7 +111,7 @@ const Overlay = styled.div`
     position: absolute;
     height: 100vh;
     width: 100%;
-    background-color: #101318;
+    background-color:rgba(16, 19, 24, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
