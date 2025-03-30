@@ -20,7 +20,7 @@ node backend.js
 
 ## 3) Inicie o frontend 
 
-Abra outro terminal e execute "npm start", depois aperte "y" quando necessário
+Abra outro terminal e execute "npm start", depois aperte "y" quando necessário.
 
 ## 4) Acesse a aplicação
 
