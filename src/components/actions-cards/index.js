@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useParams, Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 
-const ShowCards = () => {
+const ShowCards = props => {
   const for430Width = useMediaQuery({query: '(max-width: 724px)'})
 
   var { page } = useParams()
@@ -31,6 +31,14 @@ const ShowCards = () => {
     getData()
   }, [])
 
+  const handleLoad = () => {
+    if(document.getElementsByClassName('img')[0].src !== ''){
+      props.setFlag(false)
+      document.getElementById('root').style.minHeight = '100%'
+      document.getElementById('root').style.overflow = 'visible'
+    }
+  }
+
   return (
     <>
       {imgs.map((img, index) => {
@@ -41,7 +49,7 @@ const ShowCards = () => {
                   height: for430Width ? '100%' : '330px'
                 }}>
                   <DivImg>
-                    <Img src={img} alt=''></Img>
+                    <Img className='img' onLoad={handleLoad} src={img} alt=''></Img>
                   </DivImg>
                 
                   <div style={{padding: '25px 20px 0px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

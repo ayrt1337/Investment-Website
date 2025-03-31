@@ -157,7 +157,14 @@ const getSubHeader = async (url) => {
   const selectedInformationName = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > .title'
   const selectedInformation = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > .value'
 
-  const src = 'https://investidor10.com.br' + $(selectedItemImg).prop('src')
+  let src
+
+  if($(selectedItemImg).prop('src') !== 'assets/images/not-found-thumbnail.png'){
+    src = 'https://investidor10.com.br' + $(selectedItemImg).prop('src')
+  }
+
+  else src = 'https://investidor10.com.br/assets/images/not-found-thumbnail.png'
+  
   const name = $(selectedName).text()
   const cotacao = $(selectedCotacao).text()
   const variacao = $(selectedVariacao).text()
@@ -232,10 +239,12 @@ const getDemonstrativeData = async (action) => {
 
   const result = []
 
-  const selectedLastExercise = '.w-full .p-2 > span'
+  const selectedLastExercise = '.flex-col > span'
 
   $(selectedLastExercise).each((index, element) => {
-    if(index > 5){
+    console.log($(element).text())
+
+    if(index <= 30 && index % 2 == 0 && index > 11){
       result.push($(element).text())
     }
   })

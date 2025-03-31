@@ -17,12 +17,6 @@ const ActionDetails = () => {
     useEffect(() => {
         document.getElementById('root').style.height = '100vh'
         document.getElementById('root').style.overflow = 'hidden'
-
-        setTimeout(() => {
-            setFlag(false)
-            document.getElementById('root').style.minHeight = '100%'
-            document.getElementById('root').style.overflow = 'visible'
-        }, 2500)
     }, [])
 
     const [showData, setData] = useState([])
@@ -66,6 +60,14 @@ const ActionDetails = () => {
         }
         getData()
     }, [])
+
+    const handleLoad = () => {
+        if(document.getElementById('img').src !== null){
+            setFlag(false)
+            document.getElementById('root').style.minHeight = '100%'
+            document.getElementById('root').style.overflow = 'visible'
+        }
+    }
     
     return(
         <>
@@ -99,7 +101,7 @@ const ActionDetails = () => {
 
                         <div style={{display: 'flex', alignItems: 'center', padding: '20px 0px 20px 0px'}}>
                             <DivImg style={{marginRight: '15px'}}>
-                                <img style={{height: '80px', width: '80px', borderRadius: '10px'}} alt='' src={showImg}></img>
+                                <img id='img' onLoad={handleLoad} style={{height: '80px', width: '80px', borderRadius: '10px'}} alt='' src={showImg}></img>
                             </DivImg>   
 
                             <div>
@@ -241,22 +243,22 @@ const ActionDetails = () => {
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
-                                    </div>
-
-                                    <div>
-                                        <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
                                         <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[2]}</span>
                                     </div>
 
                                     <div>
+                                        <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                    </div>
+
+                                    <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
                                     </div>
                                 </div>
 
@@ -265,22 +267,22 @@ const ActionDetails = () => {
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
                                     </div>
 
                                     <div>
@@ -322,7 +324,7 @@ const ActionDetails = () => {
                                     height: for640Width ? '50px' : '80px', 
                                     width: for640Width ? '50px' : '80px',
                                     borderRadius: '10px'
-                                }} alt='' src={showImg}></img>
+                                }} id='img' onLoad={handleLoad} alt='' src={showImg}></img>
                             </DivImg>   
 
                             <div>
@@ -642,22 +644,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
-                                        </div>
-
-                                        <div>
-                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
                                             <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[2]}</span>
                                         </div>
 
                                         <div>
+                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                        </div>
+
+                                        <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
                                         </div>
                                     </div>
 
@@ -666,22 +668,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
                                         </div>
 
                                         <div>
@@ -704,22 +706,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
-                                        </div>
-
-                                        <div>
-                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
                                             <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[2]}</span>
                                         </div>
 
                                         <div>
+                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                        </div>
+
+                                        <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
                                         </div>
                                     </div>
 
@@ -728,22 +730,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
                                         </div>
 
                                         <div>

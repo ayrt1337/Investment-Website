@@ -16,12 +16,6 @@ const ShowActions = () => {
     useEffect(() => {
         document.getElementById('root').style.height = '100vh'
         document.getElementById('root').style.overflow = 'hidden'
-        
-        setTimeout(() => {
-            setFlag(false)
-            document.getElementById('root').style.minHeight = '100%'
-            document.getElementById('root').style.overflow = 'visible'
-        }, 2500)
     }, [])
 
     return(
@@ -45,7 +39,7 @@ const ShowActions = () => {
                 }}>
                     <Div>
                         <DisplayWrap>
-                            <ShowCards />
+                            <ShowCards setFlag={setFlag} />
                         </DisplayWrap>
                         
                         <Pagination />
@@ -62,7 +56,7 @@ const ShowActions = () => {
                         padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px'
                     }}>
                         <DisplayWrap style={{gap: for724Width ? '30px' : '10px'}}>
-                            <ShowCards />
+                            <ShowCards setFlag={setFlag} />
                         </DisplayWrap>
                         
                         <Pagination />
@@ -79,7 +73,7 @@ const ShowActions = () => {
                         padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px'
                     }}>
                         <DisplayWrap style={{gap: for724Width ? '30px' : '10px'}}>
-                            <ShowCards />
+                            <ShowCards setFlag={setFlag} />
                         </DisplayWrap>
                         
                         <Pagination />
