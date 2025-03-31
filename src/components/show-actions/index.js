@@ -16,13 +16,13 @@ const ShowActions = () => {
     useEffect(() => {
         document.getElementById('root').style.height = '100vh'
         document.getElementById('root').style.overflow = 'hidden'
+        
+        setTimeout(() => {
+            setFlag(false)
+            document.getElementById('root').style.minHeight = '100%'
+            document.getElementById('root').style.overflow = 'visible'
+        }, 2500)
     }, [])
-
-    setTimeout(() => {
-        setFlag(false)
-        document.getElementById('root').style.minHeight = '100%'
-        document.getElementById('root').style.overflow = 'visible'
-    }, 2500)
 
     return(
         <> 
