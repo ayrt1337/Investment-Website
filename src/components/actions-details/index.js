@@ -36,14 +36,13 @@ const ActionDetails = () => {
 
     useEffect(() => {   
         const getData = async () => {
-            await fetch('http://localhost:3000/post-action', {
+            const response = await fetch('http://localhost:3000/post-action', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({action: action})
             })
-            const response = await fetch('http://localhost:3000/action-details')
             const output = await response.json()
 
             setDemonstrativeData(output.demonstrativeData)

@@ -21,15 +21,6 @@ app.get('/', (req, res) => {
     res.status(200).send('Welcome')
 })
 
-app.post('/post-page', (req, res) => {
-    const page = req.body.page
-    res.app.set('url', `https://investidor10.com.br/acoes/?page=${page}`)
-
-    res.status(200).json({
-      status: 'Success'
-    })
-})
-
 const getImage = async(url) => {
   const response = await axios(url)
   const data = response.data
@@ -101,36 +92,20 @@ const getIndicators = async (url) => {
     return result
 }
 
-app.get('/data-scrapper', async (req, res) => {
-    try {
-      const url = res.app.get('url')
+app.post('/post-page', async (req, res) => {
+  const page = req.body.page
+  const url = `https://investidor10.com.br/acoes/?page=${page}`
 
-      const [img, indicators, title] = await Promise.all([
-        getImage(url),
-        getIndicators(url),
-        getTitle(url)
-      ])
-
-      return res.status(200).json({
-        imgs: img,
-        indicators: indicators,
-        title: title,
-      })
-    } catch (err) {
-      return res.status(500).json({
-        err: err.toString(),
-      })
-    }
-})
-
-app.post('/post-action', async (req, res) => {
-  const action = req.body.action
-
-  res.app.set('action', action)
-  res.app.set('url', `https://investidor10.com.br/acoes/${action}/`)
+  const [img, indicators, title] = await Promise.all([
+    getImage(url),
+    getIndicators(url),
+    getTitle(url)
+  ])
 
   res.status(200).json({
-      status: 'Success'
+    imgs: img,
+    indicators: indicators,
+    title: title,
   })
 })
 
@@ -239,12 +214,10 @@ const getDemonstrativeData = async (action) => {
 
   const result = []
 
-  const selectedLastExercise = '.flex-col > span'
+  const selectedLastExercise = '.bg-card > .p-1 > .w-full > .grid > .flex > span'
 
   $(selectedLastExercise).each((index, element) => {
-    console.log($(element).text())
-
-    if(index <= 30 && index % 2 == 0 && index > 11){
+    if(index % 2 !== 0){
       result.push($(element).text())
     }
   })
@@ -252,9 +225,9 @@ const getDemonstrativeData = async (action) => {
   return result
 }
 
-app.get('/action-details', async (req, res) => {
-  const action = res.app.get('action')
-  const url = res.app.get('url')
+app.post('/post-action', async (req, res) => {
+  const action = req.body.action
+  const url = `https://investidor10.com.br/acoes/${action}/`
 
   const [data, demonstrativeData] = await Promise.all([
     getSubHeader(url),

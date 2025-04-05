@@ -14,14 +14,13 @@ const ShowCards = props => {
 
   useEffect(() => {
     const getData = async () => {
-      await fetch('http://localhost:3000/post-page', {
+      const response = await fetch('http://localhost:3000/post-page', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({page: page})
       })
-      const response = await fetch('http://localhost:3000/data-scrapper')
       const output = await response.json()
 
       setImgs(output.imgs)
