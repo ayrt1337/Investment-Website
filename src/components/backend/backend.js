@@ -168,6 +168,13 @@ const getSubHeader = async (url) => {
         resultInformationName.push($(element).text())
       })
     }
+
+    else if(index == $(selectedInformationName).length - 1){
+      const selectedInformationName2 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .title'
+      $(selectedInformationName2).each((index, element) => {
+        resultInformationName.push($(element).text())
+      })
+    }
   })
 
   $(selectedInformation).each((index, element) => {    
@@ -185,6 +192,13 @@ const getSubHeader = async (url) => {
       const selectedInformation3 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .value'
         $(selectedInformation3).each((index, element) => {
           resultInformation.push($(element).text())
+      })
+    }
+
+    else if(index == $(selectedInformationName).length - 1){
+      const selectedInformationName2 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .value'
+      $(selectedInformationName2).each((index, element) => {
+        resultInformation.push($(element).text())
       })
     }
   })
