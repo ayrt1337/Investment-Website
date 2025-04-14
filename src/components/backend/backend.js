@@ -220,23 +220,53 @@ const getSubHeader = async (url) => {
 }
 
 const getDemonstrativeData = async (action) => {
-  const url = `https://analitica.auvp.com.br/acoes/${action}`
+  const url = `https://www.dadosdemercado.com.br/acoes/${action}`
   const data = await axios(url)
   const response = data.data
 
   const $ = cheerio.load(response)
 
-  const result = []
+  const result = {}
+  const result2 = {}
 
-  const selectedLastExercise = '.bg-card > .p-1 > .w-full > .grid > .flex > span'
+  const arr = []
+  const arr2 = []
+
+  const selectedLastExercise = '.page > #incomesYear > .normal-table > tbody > .level0 > .nw'
+  const selectedLastTrimester = '.page > #incomes > .normal-table > tbody > .level0 > .nw'
 
   $(selectedLastExercise).each((index, element) => {
-    if(index % 2 !== 0){
-      result.push($(element).text())
+    arr[index] = $(element).text()
+
+    if(index > 0){
+      if(arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
+        arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
+        arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
+        arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
+          result[`${arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+      }
     }
   })
 
-  return result
+  $(selectedLastTrimester).each((index, element) => {
+    arr2[index] = $(element).text()
+
+    if(index > 0){
+      if(arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
+        arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
+        arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
+        arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
+          result2[`${arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+      }
+    }
+  })
+
+  const demonstrativeData = {
+    last_exercise: result,
+    last_trimester: result2
+  }
+
+  return demonstrativeData
 }
 
 app.post('/post-action', async (req, res) => {
@@ -250,7 +280,7 @@ app.post('/post-action', async (req, res) => {
 
   res.status(200).json({
       data: data,
-      demonstrativeData: demonstrativeData
+      demonstrativeData
   })
 })
 

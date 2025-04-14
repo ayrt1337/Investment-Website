@@ -29,7 +29,7 @@ const ActionDetails = () => {
     const [showResultFundamentalIndicatorsName, setResultFundamentalIndicatorsName] = useState([])
     const [showResultInformation, setResultInformation] = useState([])
     const [showResultInformationName, setResultInformationName] = useState([])
-    const [showDemonstrativeData, setDemonstrativeData] = useState([])
+    const [showDemonstrativeData, setDemonstrativeData] = useState({last_exercise: '', last_trimester: ''})
 
 
     var { action } = useParams()
@@ -237,27 +237,22 @@ const ActionDetails = () => {
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[0]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.receita_liquida}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[2]}</span>
-                                    </div>
-
-                                    <div>
-                                        <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.lucro_bruto}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.ebit}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.lucro_liquido}</span>
                                     </div>
                                 </div>
 
@@ -266,27 +261,22 @@ const ActionDetails = () => {
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.receita_liquida}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
-                                    </div>
-
-                                    <div>
-                                        <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.lucro_bruto}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.ebit}</span>
                                     </div>
 
                                     <div>
                                         <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                        <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[9]}</span>
+                                        <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.lucro_liquido}</span>
                                     </div>
                                 </div>
                             </div>
@@ -638,27 +628,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[0]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.receita_liquida}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[2]}</span>
-                                        </div>
-
-                                        <div>
-                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.lucro_bruto}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.ebit}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.lucro_liquido}</span>
                                         </div>
                                     </div>
 
@@ -667,27 +652,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.receita_liquida}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
-                                        </div>
-
-                                        <div>
-                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.lucro_bruto}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.ebit}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[9]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.lucro_liquido}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -700,27 +680,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[0]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.receita_liquida}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[2]}</span>
-                                        </div>
-
-                                        <div>
-                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[4]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.lucro_bruto}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[6]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.ebit}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[8]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_exercise.lucro_liquido}</span>
                                         </div>
                                     </div>
 
@@ -729,27 +704,22 @@ const ActionDetails = () => {
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Receita Líquida: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[1]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.receita_liquida}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Bruto: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[3]}</span>
-                                        </div>
-
-                                        <div>
-                                            <span style={{color: '#6faddc', fontSize: '18px'}}>EBITDA: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[5]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.lucro_bruto}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>EBIT: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[7]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.ebit}</span>
                                         </div>
 
                                         <div>
                                             <span style={{color: '#6faddc', fontSize: '18px'}}>Lucro Líquido: </span>
-                                            <span style={{color: 'white', fontSize: '18px'}}>{showDemonstrativeData[9]}</span>
+                                            <span style={{color: 'white', fontSize: '18px'}}>R$ {showDemonstrativeData.last_trimester.lucro_liquido}</span>
                                         </div>
                                     </div>
                                 </div>
