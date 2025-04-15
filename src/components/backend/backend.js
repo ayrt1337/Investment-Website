@@ -220,53 +220,72 @@ const getSubHeader = async (url) => {
 }
 
 const getDemonstrativeData = async (action) => {
-  const url = `https://www.dadosdemercado.com.br/acoes/${action}`
-  const data = await axios(url)
-  const response = data.data
+  if(action.toLowerCase() !== 'hvan3'){
+    const url = `https://www.dadosdemercado.com.br/acoes/${action}`
+    const data = await axios(url)
+    const response = data.data
+    const $ = cheerio.load(response)
 
-  const $ = cheerio.load(response)
-
-  const result = {}
-  const result2 = {}
-
-  const arr = []
-  const arr2 = []
-
-  const selectedLastExercise = '.page > #incomesYear > .normal-table > tbody > .level0 > .nw'
-  const selectedLastTrimester = '.page > #incomes > .normal-table > tbody > .level0 > .nw'
-
-  $(selectedLastExercise).each((index, element) => {
-    arr[index] = $(element).text()
-
-    if(index > 0){
-      if(arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
-        arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
-        arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
-        arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
-          result[`${arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+    const result = {}
+    const result2 = {}
+  
+    const arr = []
+    const arr2 = []
+  
+    const selectedLastExercise = '.page > #incomesYear > .normal-table > tbody > .level0 > .nw'
+    const selectedLastTrimester = '.page > #incomes > .normal-table > tbody > .level0 > .nw'
+  
+    $(selectedLastExercise).each((index, element) => {
+      arr[index] = $(element).text()
+  
+      if(index > 0){
+        if(arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
+          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
+          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
+          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
+            result[`${arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+        }
       }
-    }
-  })
-
-  $(selectedLastTrimester).each((index, element) => {
-    arr2[index] = $(element).text()
-
-    if(index > 0){
-      if(arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
-        arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
-        arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
-        arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
-          result2[`${arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+    })
+  
+    $(selectedLastTrimester).each((index, element) => {
+      arr2[index] = $(element).text()
+  
+      if(index > 0){
+        if(arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
+          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
+          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
+          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
+            result2[`${arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+        }
       }
+    })
+  
+    const demonstrativeData = {
+      last_exercise: result,
+      last_trimester: result2
     }
-  })
-
-  const demonstrativeData = {
-    last_exercise: result,
-    last_trimester: result2
+  
+    return demonstrativeData
   }
+  else{
+    const demonstrativeData = {
+      last_exercise: {
+        receita_liquida: '',
+        lucro_bruto: '',
+        ebit: '',
+        lucro_liquido: ''
+      },
+      last_trimester: {
+        receita_liquida: '',
+        lucro_bruto: '',
+        ebit: '',
+        lucro_liquido: ''
+      }
+    }
 
-  return demonstrativeData
+    return demonstrativeData
+  }
 }
 
 app.post('/post-action', async (req, res) => {
