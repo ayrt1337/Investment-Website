@@ -127,7 +127,9 @@ app.post('/post-page', async (req, res) => {
 })
 
 const getSubHeader = async (url) => {
+try{
   const data = await axios(url)
+
   const response = data.data
 
   const $ = cheerio.load(response)
@@ -236,8 +238,14 @@ const getSubHeader = async (url) => {
   return result
 }
 
+catch(err){
+  console.log(err)
+} 
+}
+
 const getDemonstrativeData = async (action) => {
-  if (action.toLowerCase() !== 'hvan3') {
+  try{
+    if (action.toLowerCase() !== 'hvan3') {
     const url = `https://www.dadosdemercado.com.br/acoes/${action}`
     const data = await axios(url)
     const response = data.data
@@ -302,6 +310,10 @@ const getDemonstrativeData = async (action) => {
     }
 
     return demonstrativeData
+  }
+  }
+  catch(err){
+    console.log(err)
   }
 }
 

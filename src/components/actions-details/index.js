@@ -1,4 +1,4 @@
-import { React, useEffect, useState }  from "react"
+import { useEffect, useState }  from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
@@ -30,7 +30,7 @@ const ActionDetails = () => {
     const [showResultInformation, setResultInformation] = useState([])
     const [showResultInformationName, setResultInformationName] = useState([])
     const [showDemonstrativeData, setDemonstrativeData] = useState({last_exercise: '', last_trimester: ''})
-
+    const [notFound, setNotFound] = useState(false)
 
     var { action } = useParams()
 
@@ -45,17 +45,26 @@ const ActionDetails = () => {
             })
             const output = await response.json()
 
-            setDemonstrativeData(output.demonstrativeData)
-            setResultInformationName(output.data.resultInformationName)
-            setResultInformation(output.data.resultInformation)
-            setArrow(output.data.arrow)
-            setName(output.data.name)
-            setImg(output.data.src)
-            setCotacao(output.data.cotacao)
-            setVariacao(output.data.variacao)
-            setResultFundamentalIndicators(output.data.resultFundamentalIndicators)
-            setResultFundamentalIndicatorsName(output.data.resultFundamentalIndicatorsName)
-            setData(output.data.data)
+            if(Object.keys(output).length > 0){
+                setDemonstrativeData(output.demonstrativeData)
+                setResultInformationName(output.data.resultInformationName)
+                setResultInformation(output.data.resultInformation)
+                setArrow(output.data.arrow)
+                setName(output.data.name)
+                setImg(output.data.src)
+                setCotacao(output.data.cotacao)
+                setVariacao(output.data.variacao)
+                setResultFundamentalIndicators(output.data.resultFundamentalIndicators)
+                setResultFundamentalIndicatorsName(output.data.resultFundamentalIndicatorsName)
+                setData(output.data.data)
+            }
+
+            else{
+                setNotFound(true)
+                setFlag(false)
+                document.getElementById('root').style.minHeight = '100%'
+                document.getElementById('root').style.overflow = 'visible'
+            }
         }
         getData()
     }, [])
@@ -95,7 +104,7 @@ const ActionDetails = () => {
                             </Link>
 
                             <span style={{color:'rgb(165, 170, 177)'}}> / </span>
-                            <span style={{color:'rgb(165, 170, 177)'}}>{action}</span>
+                            <span style={{color:'rgb(165, 170, 177)'}}>{notFound ? '' : action}</span>
                         </div>  
 
                         <div style={{display: 'flex', alignItems: 'center', padding: '20px 0px 20px 0px'}}>
@@ -104,7 +113,7 @@ const ActionDetails = () => {
                             </DivImg>   
 
                             <div>
-                                <h2 style={{margin: '0', color: 'white'}}>{action}</h2>
+                                <h2 style={{margin: '0', color: 'white'}}>{notFound ? 'Não encontrado' : action}</h2>
                                 <p style={{margin: '0', color: 'white'}}>{showName}</p>
                             </div>
                         </div>
@@ -192,7 +201,7 @@ const ActionDetails = () => {
 
                         <FundamentalIndicators>
                             <div>
-                                <h5 style={{color: 'white', margin: '0px'}}>INDICADORES FUNDAMENTALISTAS {action}</h5>
+                                <h5 style={{color: 'white', margin: '0px'}}>INDICADORES FUNDAMENTALISTAS {notFound ? '' : action}</h5>
                             </div>
 
                             <div style={{display: 'grid', gridTemplateColumns: 'auto auto auto auto', gridGap: '10px', marginTop: '20px'}}>
@@ -300,7 +309,7 @@ const ActionDetails = () => {
                             </Link>
 
                             <span style={{color:'rgb(165, 170, 177)'}}> / </span>
-                            <span style={{color:'rgb(165, 170, 177)'}}>{action}</span>
+                            <span style={{color:'rgb(165, 170, 177)'}}>{notFound ? '' : action}</span>
                         </div>  
 
                         <div style={{display: 'flex', alignItems: 'center', padding: '20px 0px 20px 0px'}}>
@@ -317,7 +326,7 @@ const ActionDetails = () => {
                             </DivImg>   
 
                             <div>
-                                <h2 style={{margin: '0', color: 'white', fontSize: for640Width ? '20px' : '25px'}}>{action}</h2>
+                                <h2 style={{margin: '0', color: 'white', fontSize: for640Width ? '20px' : '25px'}}>{notFound ? 'Não encontrado' : action}</h2>
                                 <p style={{margin: '0', color: 'white', fontSize: for640Width ? '14px' : '16px'}}>{showName}</p>
                             </div>
                         </div>
@@ -550,7 +559,7 @@ const ActionDetails = () => {
 
                         <FundamentalIndicators style={{padding: for465Width ? '30px 20px 30px 20px' : '30px'}}>
                             <div>
-                                <h5 style={{color: 'white', margin: '0px', fontSize: for465Width ? '18px' : '20px'}}>INDICADORES FUNDAMENTALISTAS {action}</h5>
+                                <h5 style={{color: 'white', margin: '0px', fontSize: for465Width ? '18px' : '20px'}}>INDICADORES FUNDAMENTALISTAS {notFound ? '' : action}</h5>
                             </div>
 
                             {!for830Width &&
