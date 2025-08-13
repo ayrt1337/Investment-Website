@@ -18,78 +18,95 @@ app.listen(3000, () => {
 })
 
 app.get('/', (req, res) => {
-    res.status(200).send('Welcome')
+  res.status(200).send('Welcome')
 })
 
-const getImage = async(url) => {
+const getImage = async (url) => {
   const response = await axios(url)
   const data = response.data
 
   const $ = cheerio.load(data)
 
   const result = []
-  const selectedElement = '.animated > .site > .page > .template-front-ticker-list > .section-sectors > .container > .box > .grid > .actions > .fadeInDown > .actions-card > a > .actions-header'
+  const selectedElement = '.ticker-img'
 
-  $(selectedElement).each((parentIndex, parentElement) => {
-      $(parentElement).children().each((childId, childElement) => {
-          const src = $(childElement).prop('src')
-          if(src){
-              result.push('https://investidor10.com.br' + src)
-          }
-      })
+  $(selectedElement).each((index, element) => {
+    const src = $(element).prop('src')
+    if (src) {
+      result.push(src)
+    }
   })
   return result
 }
 
-const getTitle = async(url) => {
+const getTitle = async (url) => {
   const response = await axios(url)
   const data = response.data
 
   const $ = cheerio.load(data)
 
   const result = []
-  const selectedElement = '.animated > .site > .page > .template-front-ticker-list > .section-sectors > .container > .box > .grid > .actions > .fadeInDown > .actions-card > a > .actions-content > .actions-title'
+  const selectedElement = '.sticky > .logo > a > div '
 
   $(selectedElement).each((elementIndex, element) => {
-        const title = $(element).text()
+    let title = ''
 
-        if(title){
-          result.push(title)
+    $(element).children().each((index, element) => {
+      if (index == 0) title = $(element).text()
+
+      else {
+        title = $(element).text() + ' - ' + title
+        result.push(title)
       }
+    })
   })
   return result
 }
 
 const getIndicators = async (url) => {
-    const response = await axios(url)
-    const data = response.data
+  const response = await axios(url)
+  const data = response.data
 
-    const $ = cheerio.load(data)
+  const $ = cheerio.load(data)
 
-    const result = []
-    const keys = ['pl', 'pvp', 'dy', 'roe']
-    let keyIndex = 0
-    let dataText = {}
-    const selectedElement = '.animated > .site > .page > .template-front-ticker-list > .section-sectors > .container > .box > .grid > .actions > .fadeInDown > .actions-card > a > .actions-content > .actions-codes > div'
+  const result = []
+  const keys = ['pl', 'pvp', 'dy', 'roe']
+  let keyIndex = 0
+  let dataText = {}
+  const selectedElement = 'tbody > tr'
 
-    $(selectedElement).each((parentIndex, parentElement) => {
-      if(keyIndex == 4 ) dataText = {}
+  $(selectedElement).each((parentIndex, parentElement) => {
+    $(parentElement).children().each((index, element) => {
+      if (keyIndex == 4) {
+        result.push(dataText)
+        dataText = {}
+        keyIndex = 0
+      }
 
-      $(parentElement).children().each((childId, childElement) => {
-          const text = $(childElement).text()
-          if(text){
-              if(childId == 1 || childId % 2 !== 0){
-                if(keyIndex == 4) keyIndex = 0
+      const text = $(element).text().trim()
 
-                dataText[keys[keyIndex]] = text
-                keyIndex++
-              }
-          }
-      })
+      if (index == 3) {
+        dataText[keys[0]] = text
+        keyIndex++
+      }
 
-      if(keyIndex == 4) result.push(dataText)
+      else if (index == 4) {
+        dataText[keys[1]] = text
+        keyIndex++
+      }
+
+      else if (index == 13) {
+        dataText[keys[3]] = text
+        keyIndex++
+      }
+
+      else if (index == 21) {
+        dataText[keys[2]] = text
+        keyIndex++
+      }
     })
-    return result
+  })
+  return result
 }
 
 app.post('/post-page', async (req, res) => {
@@ -134,12 +151,12 @@ const getSubHeader = async (url) => {
 
   let src
 
-  if($(selectedItemImg).prop('src') !== 'assets/images/not-found-thumbnail.png'){
+  if ($(selectedItemImg).prop('src') !== 'assets/images/not-found-thumbnail.png') {
     src = 'https://investidor10.com.br' + $(selectedItemImg).prop('src')
   }
 
   else src = 'https://investidor10.com.br/assets/images/not-found-thumbnail.png'
-  
+
   const name = $(selectedName).text()
   const cotacao = $(selectedCotacao).text()
   const variacao = $(selectedVariacao).text()
@@ -161,15 +178,15 @@ const getSubHeader = async (url) => {
 
   $(selectedInformationName).each((index, element) => {
     resultInformationName.push($(element).text())
-    
-    if(index == 12){
+
+    if (index == 12) {
       const selectedInformationName2 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .title'
       $(selectedInformationName2).each((index, element) => {
         resultInformationName.push($(element).text())
       })
     }
 
-    else if(index == $(selectedInformationName).length - 1){
+    else if (index == $(selectedInformationName).length - 1) {
       const selectedInformationName2 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .title'
       $(selectedInformationName2).each((index, element) => {
         resultInformationName.push($(element).text())
@@ -177,10 +194,10 @@ const getSubHeader = async (url) => {
     }
   })
 
-  $(selectedInformation).each((index, element) => {    
-    if($(element).children().length > 0){
+  $(selectedInformation).each((index, element) => {
+    if ($(element).children().length > 0) {
       $(element).children().each((index, element) => {
-        if(index % 2 == 0 || index == 0){
+        if (index % 2 == 0 || index == 0) {
           resultInformation.push($(element).text())
         }
       })
@@ -188,14 +205,14 @@ const getSubHeader = async (url) => {
 
     else resultInformation.push($(element).text())
 
-    if(index == 12){
+    if (index == 12) {
       const selectedInformation3 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .value'
-        $(selectedInformation3).each((index, element) => {
-          resultInformation.push($(element).text())
+      $(selectedInformation3).each((index, element) => {
+        resultInformation.push($(element).text())
       })
     }
 
-    else if(index == $(selectedInformationName).length - 1){
+    else if (index == $(selectedInformationName).length - 1) {
       const selectedInformationName2 = '.site > .template-front-ticker-show > main > .section-sectors > .container > #about-company > #info_about > .content > #table-indicators-company > .cell > a > .value'
       $(selectedInformationName2).each((index, element) => {
         resultInformation.push($(element).text())
@@ -220,7 +237,7 @@ const getSubHeader = async (url) => {
 }
 
 const getDemonstrativeData = async (action) => {
-  if(action.toLowerCase() !== 'hvan3'){
+  if (action.toLowerCase() !== 'hvan3') {
     const url = `https://www.dadosdemercado.com.br/acoes/${action}`
     const data = await axios(url)
     const response = data.data
@@ -228,47 +245,47 @@ const getDemonstrativeData = async (action) => {
 
     const result = {}
     const result2 = {}
-  
+
     const arr = []
     const arr2 = []
-  
+
     const selectedLastExercise = '.page > #incomesYear > .normal-table > tbody > .level0 > .nw'
     const selectedLastTrimester = '.page > #incomes > .normal-table > tbody > .level0 > .nw'
-  
+
     $(selectedLastExercise).each((index, element) => {
       arr[index] = $(element).text()
-  
-      if(index > 0){
-        if(arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
-          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
-          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
-          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
-            result[`${arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+
+      if (index > 0) {
+        if (arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' ||
+          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' ||
+          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' ||
+          arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido') {
+          result[`${arr[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
         }
       }
     })
-  
+
     $(selectedLastTrimester).each((index, element) => {
       arr2[index] = $(element).text()
-  
-      if(index > 0){
-        if(arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' || 
-          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' || 
-          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' || 
-          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido'){
-            result2[`${arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
+
+      if (index > 0) {
+        if (arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'receita_liquida' ||
+          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_bruto' ||
+          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'ebit' ||
+          arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_') == 'lucro_liquido') {
+          result2[`${arr2[index - 1].toLowerCase().replaceAll('í', 'i').replaceAll(' ', '_')}`] = $(element).text().replaceAll('\n', '').replaceAll(' ', '')
         }
       }
     })
-  
+
     const demonstrativeData = {
       last_exercise: result,
       last_trimester: result2
     }
-  
+
     return demonstrativeData
   }
-  else{
+  else {
     const demonstrativeData = {
       last_exercise: {
         receita_liquida: '',
@@ -298,8 +315,8 @@ app.post('/post-action', async (req, res) => {
   ])
 
   res.status(200).json({
-      data: data,
-      demonstrativeData
+    data: data,
+    demonstrativeData
   })
 })
 
@@ -319,12 +336,12 @@ const getHomeData = async () => {
 
   $(selectedIItem).each((index, element) => {
     $(element).children().each((index, element) => {
-      if(index == 0){
+      if (index == 0) {
         resultAction.push($(element).text())
         resultImg.push(`https://analitica.auvp.com.br/api/cdn/images/assets/${$(element).text()}.svg`)
       }
-      else if(index == 1) resultName.push($(element).text())
-      else if(index == 3) resultCotacao.push($(element).text())
+      else if (index == 1) resultName.push($(element).text())
+      else if (index == 3) resultCotacao.push($(element).text())
     })
   })
 

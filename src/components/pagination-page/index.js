@@ -12,7 +12,6 @@ const Pagination = () => {
 
     const handleClickBtn = (event) => {
         if(event.target.id === 'next'){
-            console.log(number)
             if(number === 9) window.location.href = `${number}`
         
             else{
@@ -50,11 +49,7 @@ const Pagination = () => {
                         <PNumber onClick={handleClick}>2</PNumber>
                         <PNumber onClick={handleClick}>3</PNumber>
                         <PNumber onClick={handleClick}>4</PNumber>
-                        <PNumber onClick={handleClick}>5</PNumber>
-                        <PNumber onClick={handleClick}>6</PNumber>
-                        <PNumber onClick={handleClick}>7</PNumber>
-                        <PNumber onClick={handleClick}>8</PNumber>
-                        <PNumber onClick={handleClick} style={{margin: '0px'}}>9</PNumber>
+                        <PNumber onClick={handleClick} style={{margin: '0px'}}>5</PNumber>
                     </div>
 
                     <PBtn id="next" onClick={handleClickBtn}>Próxima {'>'}</PBtn>
