@@ -1,8 +1,10 @@
 # Como iniciar a aplicação
 
+É importante ressaltar que é necessário possuir o interpretador do NodeJs instalado em sua máquina, o download pode ser feito aqui: https://nodejs.org/en/download.
+
 ## 1) Instale as depedências
 
-Rode no terminal o comando "npm install".
+Abra o terminal e rode o comando "npm install".
 
 ## 2) Inicie o backend
 
