@@ -12,6 +12,7 @@ const ShowActions = () => {
     const for430Width = useMediaQuery({query: '(max-width: 430px)'})
 
     const [flag, setFlag] = useState(true)
+    const [notFound, setNotFound] = useState(false)
 
     useEffect(() => {
         document.getElementById('root').style.height = '100vh'
@@ -33,50 +34,91 @@ const ShowActions = () => {
             <Header />
 
             {!for1020Width &&
-                <div style={{
+                <div style={{   
+                    height: notFound ? '100%' : 'auto', 
+                    overflow: notFound ? 'hidden' : 'visible', 
                     backgroundColor: '#101318',
-                    padding: '80px 18% 80px 18%'
-                }}>
-                    <Div>
-                        <DisplayWrap>
-                            <ShowCards setFlag={setFlag} />
-                        </DisplayWrap>
+                    padding: '80px 18% 80px 18%', 
+                    }}>
+                    <Div style={{ backgroundColor: notFound ? 'transparent' : ''}}>
+                        {!notFound &&
+                            <>
+                                <DisplayWrap>
+                                    <ShowCards setFlag={setFlag} setNotFound={setNotFound} />
+                                </DisplayWrap>
+                                
+                                <Pagination />
+                            </>
+                        }
                         
-                        <Pagination />
+                        {notFound &&
+                            <div style={{ color: 'white', textAlign: 'center' }}>
+                                <p style={{fontSize: '50px'}}>Ops...</p>
+                                <p style={{fontSize: '22px'}}>Tente procurar por outra página</p>
+                            </div>
+                        }
                     </Div>
                 </div>
             }
 
             {(for1020Width && !for430Width) &&
                 <div style={{
+                    height: notFound ? '100%' : 'auto', 
+                    overflow: notFound ? 'hidden' : 'visible', 
                     backgroundColor: '#101318', 
                     padding: for1020Width ? '80px 40px 80px 40px' : '80px 18% 80px 18%',
                 }}>
                     <Div style={{
-                        padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px'
+                        padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px',
+                        backgroundColor: notFound ? 'transparent' : ''
                     }}>
-                        <DisplayWrap style={{gap: for724Width ? '30px' : '10px'}}>
-                            <ShowCards setFlag={setFlag} />
-                        </DisplayWrap>
-                        
-                        <Pagination />
+                        {!notFound &&
+                            <>
+                                <DisplayWrap style={{gap: for724Width ? '30px' : '10px'}}>
+                                    <ShowCards setFlag={setFlag} setNotFound={setNotFound} />
+                                </DisplayWrap>
+                                
+                                <Pagination />
+                            </>
+                        }
+
+                        {notFound &&
+                            <div style={{ color: 'white', textAlign: 'center' }}>
+                                <p style={{fontSize: '50px'}}>Ops...</p>
+                                <p style={{fontSize: '22px'}}>Tente procurar por outra página</p>
+                            </div>
+                        }
                     </Div>
                 </div>
             }
 
             {for430Width &&
                 <div style={{
+                    height: notFound ? '100%' : 'auto', 
+                    overflow: notFound ? 'hidden' : 'visible', 
                     backgroundColor: '#101318', 
                     padding: for430Width ? '80px 20px 80px 20px' : '80px 40px 80px 40px'
                 }}>
                     <Div style={{
-                        padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px'
+                        padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px',
+                        backgroundColor: notFound ? 'transparent' : ''
                     }}>
-                        <DisplayWrap style={{gap: for724Width ? '30px' : '10px'}}>
-                            <ShowCards setFlag={setFlag} />
-                        </DisplayWrap>
-                        
-                        <Pagination />
+                        {!notFound &&
+                            <>
+                                <DisplayWrap style={{gap: for724Width ? '30px' : '10px'}}>
+                                    <ShowCards setFlag={setFlag} setNotFound={setNotFound} />
+                                </DisplayWrap>
+                                
+                                <Pagination />
+                            </>
+                        }
+
+                        {notFound &&
+                            <div style={{ color: 'white', textAlign: 'center' }}>
+                                <p style={{fontSize: '50px'}}>Ops...</p>
+                                <p style={{fontSize: '22px'}}>Tente procurar por outra página</p>
+                            </div>
+                        }
                     </Div>
                 </div>
             }

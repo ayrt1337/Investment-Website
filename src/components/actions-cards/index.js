@@ -23,9 +23,18 @@ const ShowCards = props => {
       })
       const output = await response.json()
 
-      setImgs(output.imgs)
-      setIndicators(output.indicators)
-      setTitle(output.title)
+      if(output.imgs.length == 0 || output.indicators.length == 0 || output.title.length == 0){
+        props.setNotFound(true)
+        props.setFlag(false)
+        document.getElementById('root').style.minHeight = '100vh'
+        document.getElementById('root').style.overflow = 'hidden'
+      }
+
+      else{
+        setImgs(output.imgs)
+        setIndicators(output.indicators)
+        setTitle(output.title)
+      }
     }
     getData()
   }, [])
@@ -42,7 +51,7 @@ const ShowCards = props => {
     <>
       {imgs.map((img, index) => {
             return(
-              <Link key={index} to={`/acoes/${title[index].substring(title[index].lastIndexOf('-') + 2)}`} style={{textDecoration: 'none', display: 'flex', justifyContent: 'center'}}>
+              <Link key={index} to={`/acao/${title[index].substring(title[index].lastIndexOf('-') + 2)}`} style={{textDecoration: 'none', display: 'flex', justifyContent: 'center'}}>
                 <DivCard style={{
                   width: for430Width ? '100%' : '250px',
                   height: for430Width ? '100%' : '330px'

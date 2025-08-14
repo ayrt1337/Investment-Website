@@ -96,7 +96,7 @@ const Home = () => {
                                 }}>
                                     {showSearch.names.map((element, index) => {
                                         return(
-                                            <Link key={index} to={`acoes/${showSearch.actions[index]}`} style={{textDecoration: 'none', color: 'white', width: '100%'}}>
+                                            <Link key={index} to={`acao/${showSearch.actions[index]}`} style={{textDecoration: 'none', color: 'white', width: '100%'}}>
                                                 {(index == showSearch.names.length - 1) &&
                                                     <DivResult style={{border: 'solid 0px #ccc'}}> 
                                                         <div style={{display: 'flex', alignItems: 'center'}}>
@@ -130,7 +130,7 @@ const Home = () => {
                             <h5 style={{color: 'white', margin: '0px', fontSize: '18px'}}>OS ATIVOS MAIS PROCURADOS</h5>
 
                             <DivWrap>
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBAS3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBAS3'}>
                                     <DivCard>
                                         <Img src="https://cdn.asupernova.com.br/stocks/icons/BBAS3.svg"></Img>
 
@@ -140,7 +140,7 @@ const Home = () => {
                                     </DivCard>
                                 </Link>
 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBDC3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBDC3'}>
                                     <DivCard>
                                         <Img src="https://cdn.asupernova.com.br/stocks/icons/BBDC3.svg"></Img>
 
@@ -150,7 +150,7 @@ const Home = () => {
                                     </DivCard>
                                 </Link> 
                                 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/WEGE3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/WEGE3'}>
                                     <DivCard>
                                         <Img src="https://cdn.asupernova.com.br/stocks/icons/WEGE3.svg"></Img>
 
@@ -160,7 +160,7 @@ const Home = () => {
                                     </DivCard>
                                 </Link>
             
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/VALE3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/VALE3'}>
                                     <DivCard>
                                         <Img src="https://cdn.asupernova.com.br/stocks/icons/VALE3.svg"></Img>
 
@@ -170,7 +170,7 @@ const Home = () => {
                                     </DivCard>
                                 </Link>
             
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/PETR3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/PETR3'}>
                                     <DivCard>
                                         <Img style={{marginTop: '16px'}} src="https://cdn.asupernova.com.br/stocks/icons/PETR3.svg"></Img>
 
@@ -180,7 +180,7 @@ const Home = () => {
                                     </DivCard>
                                 </Link>
 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBDC4'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBDC4'}>
                                     <DivCard>
                                         <Img src="https://cdn.asupernova.com.br/stocks/icons/BBDC4.svg"></Img>
 
@@ -233,7 +233,7 @@ const Home = () => {
                                 }}>
                                     {showSearch.names.map((element, index) => {
                                         return(
-                                            <Link key={index} to={`acoes/${showSearch.actions[index]}`} style={{textDecoration: 'none', color: 'white', width: '100%'}}>
+                                            <Link key={index} to={`acao/${showSearch.actions[index]}`} style={{textDecoration: 'none', color: 'white', width: '100%'}}>
                                                 {(index == showSearch.names.length - 1) &&
                                                     <DivResult style={{border: 'solid 0px #ccc'}}> 
                                                         <div style={{display: 'flex', alignItems: 'center'}}>
@@ -267,7 +267,7 @@ const Home = () => {
                             <h5 style={{color: 'white', margin: '0px', fontSize: '18px'}}>OS ATIVOS MAIS PROCURADOS</h5>
 
                             <DivWrap>
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBAS3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBAS3'}>
                                     {!for941Width && 
                                         <DivCard>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/BBAS3.svg"></Img>
@@ -289,7 +289,7 @@ const Home = () => {
                                     }
                                 </Link>
 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBDC3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBDC3'}>
                                     {!for941Width && 
                                         <DivCard>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/BBDC3.svg"></Img>
@@ -311,7 +311,7 @@ const Home = () => {
                                     }
                                 </Link> 
                                 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/WEGE3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/WEGE3'}>
                                     {!for941Width && 
                                         <DivCard>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/WEGE3.svg"></Img>
@@ -333,7 +333,7 @@ const Home = () => {
                                     }
                                 </Link>
             
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/VALE3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/VALE3'}>
                                     {!for941Width && 
                                         <DivCard>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/WEGE3.svg"></Img>
@@ -355,7 +355,7 @@ const Home = () => {
                                     }
                                 </Link>
             
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/PETR3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/PETR3'}>
                                     {!for941Width && 
                                         <DivCard>
                                             <Img style={{marginTop: '16px'}} src="https://cdn.asupernova.com.br/stocks/icons/PETR3.svg"></Img>
@@ -377,7 +377,7 @@ const Home = () => {
                                     }
                                 </Link>
 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBDC4'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBDC4'}>
                                     {!for941Width && 
                                         <DivCard>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/BBDC4.svg"></Img>
@@ -438,7 +438,7 @@ const Home = () => {
                                 }}>
                                     {showSearch.names.map((element, index) => {
                                         return(
-                                            <Link key={index} to={`acoes/${showSearch.actions[index]}`} style={{textDecoration: 'none', color: 'white', width: '100%'}}>
+                                            <Link key={index} to={`acao/${showSearch.actions[index]}`} style={{textDecoration: 'none', color: 'white', width: '100%'}}>
                                                 {(index == showSearch.names.length - 1) &&
                                                     <DivResult style={{border: 'solid 0px #ccc', padding: for620Width === true ? '10px 8px 10px 8px' : '15px 20px 15px 20px'}}> 
                                                         <div style={{display: 'flex', alignItems: 'center'}}>
@@ -485,7 +485,7 @@ const Home = () => {
                             <h5 style={{color: 'white', margin: '0px', fontSize: '18px'}}>OS ATIVOS MAIS PROCURADOS</h5>
 
                             <DivWrap>
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBAS3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBAS3'}>
                                     {!for430Width && 
                                         <DivCard style={{width: '280px'}}>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/BBAS3.svg"></Img>
@@ -507,7 +507,7 @@ const Home = () => {
                                     }
                                 </Link>
 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBDC3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBDC3'}>
                                     {!for430Width && 
                                         <DivCard style={{width: '280px'}}>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/BBDC3.svg"></Img>
@@ -529,7 +529,7 @@ const Home = () => {
                                     }
                                 </Link> 
                                 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/WEGE3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/WEGE3'}>
                                     {!for430Width && 
                                         <DivCard style={{width: '280px'}}>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/WEGE3.svg"></Img>
@@ -551,7 +551,7 @@ const Home = () => {
                                     }
                                 </Link>
             
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/VALE3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/VALE3'}>
                                     {!for430Width && 
                                         <DivCard style={{width: '280px'}}>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/WEGE3.svg"></Img>
@@ -573,7 +573,7 @@ const Home = () => {
                                     }
                                 </Link>
             
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/PETR3'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/PETR3'}>
                                     {!for430Width && 
                                         <DivCard style={{width: '280px'}}>
                                             <Img style={{marginTop: '16px'}} src="https://cdn.asupernova.com.br/stocks/icons/PETR3.svg"></Img>
@@ -595,7 +595,7 @@ const Home = () => {
                                     }
                                 </Link>
 
-                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acoes/BBDC4'}>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={'acao/BBDC4'}>
                                     {!for430Width && 
                                         <DivCard style={{width: '280px'}}>
                                             <Img src="https://cdn.asupernova.com.br/stocks/icons/BBDC4.svg"></Img>

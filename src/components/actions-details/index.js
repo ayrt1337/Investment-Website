@@ -104,7 +104,7 @@ const ActionDetails = () => {
                             </Link>
 
                             <span style={{color:'rgb(165, 170, 177)'}}> / </span>
-                            <span style={{color:'rgb(165, 170, 177)'}}>{notFound ? '' : action}</span>
+                            <span style={{color:'rgb(165, 170, 177)'}}>{notFound ? '' : action.toUpperCase()}</span>
                         </div>  
 
                         <div style={{display: 'flex', alignItems: 'center', padding: '20px 0px 20px 0px'}}>
@@ -113,7 +113,7 @@ const ActionDetails = () => {
                             </DivImg>   
 
                             <div>
-                                <h2 style={{margin: '0', color: 'white'}}>{notFound ? 'Não encontrado' : action}</h2>
+                                <h2 style={{margin: '0', color: 'white'}}>{notFound ? 'Não encontrado' : action.toUpperCase()}</h2>
                                 <p style={{margin: '0', color: 'white'}}>{showName}</p>
                             </div>
                         </div>
@@ -201,7 +201,7 @@ const ActionDetails = () => {
 
                         <FundamentalIndicators>
                             <div>
-                                <h5 style={{color: 'white', margin: '0px'}}>INDICADORES FUNDAMENTALISTAS {notFound ? '' : action}</h5>
+                                <h5 style={{color: 'white', margin: '0px'}}>INDICADORES FUNDAMENTALISTAS {notFound ? '' : action.toUpperCase()}</h5>
                             </div>
 
                             <div style={{display: 'grid', gridTemplateColumns: 'auto auto auto auto', gridGap: '10px', marginTop: '20px'}}>
@@ -309,7 +309,7 @@ const ActionDetails = () => {
                             </Link>
 
                             <span style={{color:'rgb(165, 170, 177)'}}> / </span>
-                            <span style={{color:'rgb(165, 170, 177)'}}>{notFound ? '' : action}</span>
+                            <span style={{color:'rgb(165, 170, 177)'}}>{notFound ? '' : action.toUpperCase()}</span>
                         </div>  
 
                         <div style={{display: 'flex', alignItems: 'center', padding: '20px 0px 20px 0px'}}>
@@ -326,7 +326,7 @@ const ActionDetails = () => {
                             </DivImg>   
 
                             <div>
-                                <h2 style={{margin: '0', color: 'white', fontSize: for640Width ? '20px' : '25px'}}>{notFound ? 'Não encontrado' : action}</h2>
+                                <h2 style={{margin: '0', color: 'white', fontSize: for640Width ? '20px' : '25px'}}>{notFound ? 'Não encontrado' : action.toUpperCase()}</h2>
                                 <p style={{margin: '0', color: 'white', fontSize: for640Width ? '14px' : '16px'}}>{showName}</p>
                             </div>
                         </div>
@@ -559,7 +559,7 @@ const ActionDetails = () => {
 
                         <FundamentalIndicators style={{padding: for465Width ? '30px 20px 30px 20px' : '30px'}}>
                             <div>
-                                <h5 style={{color: 'white', margin: '0px', fontSize: for465Width ? '18px' : '20px'}}>INDICADORES FUNDAMENTALISTAS {notFound ? '' : action}</h5>
+                                <h5 style={{color: 'white', margin: '0px', fontSize: for465Width ? '18px' : '20px'}}>INDICADORES FUNDAMENTALISTAS {notFound ? '' : action.toUpperCase()}</h5>
                             </div>
 
                             {!for830Width &&
