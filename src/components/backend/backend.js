@@ -17,10 +17,6 @@ app.listen(3000, () => {
   console.log('Server started')
 })
 
-app.get('/', (req, res) => {
-  res.status(200).send('Welcome')
-})
-
 const getImage = async (url) => {
   const response = await axios(url)
   const data = response.data

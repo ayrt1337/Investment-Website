@@ -38,7 +38,8 @@ const ShowActions = () => {
                     height: notFound ? '100%' : 'auto', 
                     overflow: notFound ? 'hidden' : 'visible', 
                     backgroundColor: '#101318',
-                    padding: '80px 18% 80px 18%', 
+                    padding: '80px 18% 80px 18%',
+                    minHeight: '100vh'
                     }}>
                     <Div style={{ backgroundColor: notFound ? 'transparent' : ''}}>
                         {!notFound &&
@@ -67,6 +68,7 @@ const ShowActions = () => {
                     overflow: notFound ? 'hidden' : 'visible', 
                     backgroundColor: '#101318', 
                     padding: for1020Width ? '80px 40px 80px 40px' : '80px 18% 80px 18%',
+                    minHeight: '100vh'
                 }}>
                     <Div style={{
                         padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px',
@@ -97,7 +99,8 @@ const ShowActions = () => {
                     height: notFound ? '100%' : 'auto', 
                     overflow: notFound ? 'hidden' : 'visible', 
                     backgroundColor: '#101318', 
-                    padding: for430Width ? '80px 20px 80px 20px' : '80px 40px 80px 40px'
+                    padding: for430Width ? '80px 20px 80px 20px' : '80px 40px 80px 40px',
+                    minHeight: '100vh'
                 }}>
                     <Div style={{
                         padding: for430Width ? '40px 20px 40px 20px' : '40px 40px 40px 40px',
